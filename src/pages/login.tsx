@@ -22,7 +22,7 @@ const login = () => {
     return (
         <div>
             <div className='mx-auto pt-20 max-w-md'>
-                <h1 className='mb-12 mx-auto text-3xl font-semibold w-fit mx-0'>
+                <h1 className='mb-12 mx-auto text-3xl font-semibold w-fit'>
                     로그인
                 </h1>
                 <form onSubmit={handleSubmit}
