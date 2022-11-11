@@ -56,14 +56,17 @@ const login = () => {
                         <div className='border-r'></div>
                         <div>회원가입</div>
                     </div>
-                    <button className='my-3 p-3 w-full rounded-md font-medium bg-[#fee500]'>
-                        카카오로 시작
+                    <button className='flex my-3 p-3 w-full rounded-md font-medium bg-[#fee500] justify-center items-center'>
+                        <img src="https://assets.cdn.soomgo.com/icons/icon-login-kakaotalk-btn.svg" alt="이미지가 없습니다." />
+                        <span className='ml-3'>카카오로 시작</span>
                     </button>
-                    <button className='mb-3 p-3 w-full text-white rounded-md font-medium bg-[#03c75a]'>
-                        네이버로 시작
+                    <button className='flex mb-3 p-3 w-full text-white rounded-md font-medium bg-[#03c75a] justify-center items-center'>
+                        <img src="https://assets.cdn.soomgo.com/icons/icon-login-naver-btn.svg" alt="이미지가 없습니다." />
+                        <span className='ml-3'>네이버로 시작</span>
                     </button>
-                    <button className='mb-3 p-3 w-full text-white rounded-md font-medium bg-[#1876f1]'>
-                        페이스북으로 시작
+                    <button className='flex mb-3 p-3 w-full text-white rounded-md font-medium bg-[#1876f1] justify-center items-center'>
+                        <img src="https://assets.cdn.soomgo.com/icons/icon-login-facebook-btn.svg" alt="이미지가 없습니다." />
+                        <span className='ml-3'>페이스북으로 시작</span>
                     </button>
                 </form>
               </div>
