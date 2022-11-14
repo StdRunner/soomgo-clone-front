@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
                     <Link href='/register'>
                         회원가입
                     </Link>
-                    <button className='h-9 px-3 text-white rounded-md font-semibold bg-[#9370db]'>
+                    <button className='h-9 px-3 text-white rounded-md font-semibold bg-[#9370db] hover:bg-[#663399]'>
                         <a href="/master">고수가입</a>
                     </button>
                 </div>
