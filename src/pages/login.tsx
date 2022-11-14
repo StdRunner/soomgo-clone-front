@@ -48,7 +48,7 @@ const login = () => {
                             className=''
                         />
                     </div>
-                    <button className='p-3 w-full text-white rounded-md font-medium bg-[#00C7AE]'>
+                    <button className='p-3 w-full text-white rounded-md font-medium bg-[#9370db]'>
                         이메일 로그인
                     </button>
                     <div className='flex justify-evenly py-6 px-16 text-sm text-gray-500'>
