@@ -26,14 +26,14 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className='relative left-72 h-full w-96 inline'>
+                <div className='relative left-72 h-full w-96 flex justify-center'>
                     <div className='inline'>
                         <p>숨고소개</p>
                         <p>회사소개</p>
                         <p>채용안내</p>
                         <p>팀블로그</p>
                     </div>
-                    <div className='flex'>
+                    <div className='inline'>
                         <p>고객안내</p>
                         <p>이용안내</p>
                         <p>안전정책</p>
@@ -42,14 +42,14 @@ const Footer = () => {
                         <p>숨고보증</p>
                         <p>고수에게묻다</p>
                     </div>
-                    <div className='flex'>
+                    <div className='inline'>
                         <p>고수안내</p>
                         <p>이용안내</p>
                         <p>고수가이드</p>
                         <p>고수가입</p>
                         <p>고수센터</p>
                     </div>
-                    <div className='flex'>
+                    <div className='inline'>
                         <p>고객센터</p>
                         <a>공지사항</a>
                         <a>자주묻는질문</a>
