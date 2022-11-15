@@ -27,7 +27,7 @@ const login = () => {
                 </h1>
                 <form onSubmit={handleSubmit}
                     className='bg-white p-10 rounded-md border'>
-                    <div className='mb-8'>
+                    <div className='mb-7'>
                         <h4 className='mb-2 font-semibold'>이메일</h4>
                         <InputGroup 
                             placeholder = "example@soomgo-clone.com"
@@ -37,7 +37,7 @@ const login = () => {
                             className=''
                         />
                     </div>
-                    <div className='mb-8'>
+                    <div className='mb-7'>
                         <h4 className='mb-2 font-semibold'>비밀번호</h4>
                         <InputGroup 
                             placeholder = "비밀번호를 입력해주세요."
