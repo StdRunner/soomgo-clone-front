@@ -20,15 +20,15 @@ const login = () => {
     }
 
     return (
-        <div>
-            <div className='mx-auto py-20' style={{ width: '424px' }}>
-                <h1 className='mb-12 mx-auto text-3xl font-semibold w-fit'>
+        <div className='flex'>
+            <div className='w-full py-20'>
+                <h1 className='w-full mb-12 text-3xl font-semibold text-center'>
                     로그인
                 </h1>
                 <form onSubmit={handleSubmit}
-                    className='bg-white p-10 rounded-md'
-                    style={{ border: '1px solid #f2f2f2' }}>
-                    <div className='mb-7'>
+                    className='mx-auto grid justify-center bg-white p-10 rounded-md'
+                    style={{ border: '1px solid #f2f2f2', width: '424px' }}>
+                    <div className='mb-6'>
                         <h4 className='mb-2 font-semibold'>이메일</h4>
                         <InputGroup 
                             placeholder = "example@soomgo-clone.com"
@@ -38,7 +38,7 @@ const login = () => {
                             className=''
                         />
                     </div>
-                    <div className='mb-7'>
+                    <div className='mb-6'>
                         <h4 className='mb-2 font-semibold'>비밀번호</h4>
                         <InputGroup 
                             placeholder = "비밀번호를 입력해주세요."
@@ -61,15 +61,15 @@ const login = () => {
                             <a href=''>회원가입</a>
                         </div>
                     </div>
-                    <button className='flex my-3 p-3 w-full rounded-md font-medium bg-[#fee500] justify-center items-center'>
+                    <button className='flex my-3 p-3 w-full rounded-md font-medium bg-[#fee500] hover:bg-[#d8c300] justify-center items-center'>
                         <img src="https://assets.cdn.soomgo.com/icons/icon-login-kakaotalk-btn.svg" alt="이미지가 없습니다." />
                         <span className='ml-3'>카카오로 시작</span>
                     </button>
-                    <button className='flex mb-3 p-3 w-full text-white rounded-md font-medium bg-[#03c75a] justify-center items-center'>
+                    <button className='flex mb-3 p-3 w-full text-white rounded-md font-medium bg-[#03c75a] hover:bg-[#02a149] justify-center items-center'>
                         <img src="https://assets.cdn.soomgo.com/icons/icon-login-naver-btn.svg" alt="이미지가 없습니다." />
                         <span className='ml-3'>네이버로 시작</span>
                     </button>
-                    <button className='flex mb-3 p-3 w-full text-white rounded-md font-medium bg-[#1876f1] justify-center items-center'>
+                    <button className='flex mb-3 p-3 w-full text-white rounded-md font-medium bg-[#1876f1] hover:bg-[#0d64d6] justify-center items-center'>
                         <img src="https://assets.cdn.soomgo.com/icons/icon-login-facebook-btn.svg" alt="이미지가 없습니다." />
                         <span className='ml-3'>페이스북으로 시작</span>
                     </button>
