@@ -21,12 +21,13 @@ const login = () => {
 
     return (
         <div>
-            <div className='mx-auto py-20 max-w-md'>
+            <div className='mx-auto py-20' style={{ width: '424px' }}>
                 <h1 className='mb-12 mx-auto text-3xl font-semibold w-fit'>
                     로그인
                 </h1>
                 <form onSubmit={handleSubmit}
-                    className='bg-white p-10 rounded-md border'>
+                    className='bg-white p-10 rounded-md'
+                    style={{ border: '1px solid #f2f2f2' }}>
                     <div className='mb-7'>
                         <h4 className='mb-2 font-semibold'>이메일</h4>
                         <InputGroup 
@@ -48,7 +49,7 @@ const login = () => {
                             className=''
                         />
                     </div>
-                    <button className='p-3 w-full text-white rounded-md font-medium bg-[#9370db] hover:bg-[#663399]'>
+                    <button className={`p-3 w-full text-white rounded-md font-medium bg-[${process.env.SIGN_COLOR}] hover:bg-[${process.env.SIGN_COLOR_HOVER}]`}>
                         이메일 로그인
                     </button>
                     <div className='flex justify-evenly py-6 px-16 text-sm text-gray-500'>

@@ -4,10 +4,10 @@ import styles from '../styles/Home.module.css'
 
 const Navbar: React.FC = () => {
     return (
-        <div className='flex fixed top-0 left-0 w-full h-16 bg-white '>
+        <div className='flex fixed top-0 left-0 w-full bg-white' style={{ height: '72px' }}>
             <div className='flex w-full px-14 justify-center items-center'>
                 <div className='flex w-96 h-9 justify-evenly items-center'>
-                    <a href="/" className='italic text-xl font-bold text-[#9370db]'>
+                    <a href="/" className={`italic text-xl font-bold text-[${process.env.SIGN_COLOR}]`}>
                         Soomgo<br/>
                         Clone
                     </a>
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
                     <Link href='/register'>
                         회원가입
                     </Link>
-                    <button className='h-9 px-3 text-white rounded-md font-semibold bg-[#9370db] hover:bg-[#663399]'>
+                    <button className={`h-9 px-3 text-white rounded-md font-semibold bg-[${process.env.SIGN_COLOR}] hover:bg-[${process.env.SIGN_COLOR_HOVER}]`}>
                         <a href="/master">고수가입</a>
                     </button>
                 </div>
