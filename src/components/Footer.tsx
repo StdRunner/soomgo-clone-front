@@ -7,7 +7,7 @@ const Footer = () => {
             <div className='flex h-1/2'>
                 <div className='h-full'>
                     <div className='h-full pb-7'>
-                        <p className={`pb-1 text-xl font-medium text-[${process.env.SIGN_COLOR}]`}>
+                        <p className='pb-1 text-xl font-medium text-[#9370db]'>
                             1234-5678
                         </p>
                         <p className='pb-8 text-sm font-medium text-[#737373]'>
@@ -15,11 +15,11 @@ const Footer = () => {
                             (점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)
                         </p>
                         <div className='flex'>
-                            <button className={`flex h-9 w-36 mr-2 bg-[${process.env.SIGN_COLOR}] text-xs text-white font-medium rounded-3xl justify-center items-center`}>
+                            <button className='flex h-9 w-36 mr-2 bg-[#9370db] text-xs text-white font-medium rounded-3xl justify-center items-center'>
                                 <img src="https://assets.cdn.soomgo.com/icons/icon-download-appstore.svg" alt="앱스토어" className='mr-1'/>
                                 APP STORE
                             </button>
-                            <button className={`flex h-9 w-36 bg-[${process.env.SIGN_COLOR}] text-xs text-white font-medium rounded-3xl justify-center items-center`}>
+                            <button className='flex h-9 w-36 bg-[#9370db] text-xs text-white font-medium rounded-3xl justify-center items-center'>
                                 <img src="https://assets.cdn.soomgo.com/icons/icon-download-palystore.svg" alt="구글플레이" className='mr-1' />
                                 PLAY STORE
                             </button>

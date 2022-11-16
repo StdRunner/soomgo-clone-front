@@ -22,7 +22,7 @@ const login = () => {
     return (
         <div className='flex'>
             <div className='w-full py-20'>
-                <h1 className='w-full mb-12 text-3xl font-semibold text-center'>
+                <h1 className='w-full mb-12 font-medium text-center' style={{ fontSize : '2.125rem' }}>
                     로그인
                 </h1>
                 <form onSubmit={handleSubmit}
@@ -49,7 +49,7 @@ const login = () => {
                             className=''
                         />
                     </div>
-                    <button className={`p-3 w-full text-white rounded-md font-medium bg-[${process.env.SIGN_COLOR}] hover:bg-[${process.env.SIGN_COLOR_HOVER}]`}>
+                    <button className='p-3 w-full text-white rounded-md font-medium bg-[#9370db] hover:bg-[#663399]'>
                         이메일 로그인
                     </button>
                     <div className='flex justify-evenly py-6 px-16 text-sm text-gray-500'>
