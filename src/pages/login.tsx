@@ -8,11 +8,12 @@ const login = () => {
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
-        
+
         try {
             /**
              * 로그인 로직 추가
              */
+
         } catch (error: any) {
             console.log('error', error);
             setErrors(error.response.data || {});
@@ -44,8 +45,7 @@ const login = () => {
                             placeholder = "비밀번호를 입력해주세요."
                             value={password}
                             setValue={setPassword}
-                            // error={errors.password}
-                            error='패스워드가 잘못되었습니다.'
+                            error={errors.password}
                             className=''
                         />
                     </div>

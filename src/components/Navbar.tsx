@@ -4,8 +4,8 @@ import styles from '../styles/Home.module.css'
 
 const Navbar: React.FC = () => {
     return (
-        <div className='flex fixed top-0 left-0 w-full bg-white' style={{ height: '72px' }}>
-            <div className='flex w-full px-14 justify-center items-center'>
+        <div className='flex top-0 left-0 w-full bg-white' style={{ height: '72px' }}>
+            <div className='flex w-fit mx-auto justify-center items-center'>
                 <div className='flex w-96 h-9 justify-evenly items-center'>
                     <a href="/" className='italic text-xl font-bold text-[#9370db]'>
                         Soomgo<br/>

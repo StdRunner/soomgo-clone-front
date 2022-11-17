@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 function MyApp({ Component, pageProps }: AppProps) {
   return <div className='bg-[#fafafa]'>
     <Navbar />
-    <div className='w-full min-h-screen' style={{ paddingTop: '72px' }}>
+    <div className='w-full min-h-screen'>
       <Component {...pageProps} />
     </div>
     <Footer />
