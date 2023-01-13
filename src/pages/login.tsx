@@ -1,5 +1,7 @@
 import React, { FormEvent, useState } from 'react'
 import InputGroup from '../components/InputGroups'
+import axios from 'axios'
+import { profileEnd } from 'console';
 
 const login = () => {
     const [email, setEmail] = useState("");
@@ -9,14 +11,40 @@ const login = () => {
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
 
-        try {
-            /**
-             * 로그인 로직 추가
-             */
+        // 요청 baseURL을 찾을 수 없을 때
+        if(axios.defaults.baseURL === undefined 
+            || axios.defaults.baseURL === "") {
+                console.error(`Cannot defind baseURL. check ".env*" files and "NEXT_PUBLIC_SERVER_BASE_URL" variable.`);
+                return;
+        }
+        
+        const tempErr = {};
 
+        // 사용자 입력 체크
+        if(!email) {
+            tempErr.email = "이메일 주소를 입력해주세요.";
+        }
+        if(!password) {
+            tempErr.password = "비밀번호를 입력해주세요.";
+        }
+
+        setErrors(tempErr);
+
+        // 에러 존재 시 함수 종료
+        if(Object.keys(tempErr).length !== 0)
+            return;
+
+        try {
+            const res = await axios.post(`/auth/login`, {
+                email,
+                password,
+                name: null,
+                isMaster: null
+            })
+
+            console.log('res', res.data);
         } catch (error: any) {
             console.log('error', error);
-            setErrors(error.response.data || {});
         }
     }
 
@@ -27,7 +55,7 @@ const login = () => {
                     로그인
                 </h1>
                 <form onSubmit={handleSubmit}
-                    className='mx-auto grid justify-center bg-white p-10 rounded-md'
+                    className='mx-auto justify-center bg-white p-10 rounded-md'
                     style={{ border: '1px solid #f2f2f2', width: '424px' }}>
                     <div className='mb-6'>
                         <h4 className='mb-2 font-semibold'>이메일</h4>
@@ -36,13 +64,14 @@ const login = () => {
                             value={email}
                             setValue={setEmail}
                             error={errors.email}
-                            className=''
+                            className='' 
                         />
                     </div>
                     <div className='mb-6'>
                         <h4 className='mb-2 font-semibold'>비밀번호</h4>
                         <InputGroup 
                             placeholder = "비밀번호를 입력해주세요."
+                            type='password'
                             value={password}
                             setValue={setPassword}
                             error={errors.password}
