@@ -8,8 +8,8 @@
 
 - - -
 
-#### 숨고 서비스 페이지
+#### [숨고 서비스 페이지]
 <img src="public/readme/soomgo-org.png" />
 
-#### 숨고 서비스 클론 프로젝트
+#### [숨고 서비스 클론 프로젝트]
 <img src="public/readme/soomgo-cln.png" />
