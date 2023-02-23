@@ -2,19 +2,25 @@ import React, { FormEvent, useState } from 'react'
 import InputGroup from '../components/InputGroups'
 import { FaCheckSquare } from 'react-icons/fa'
 import axios from 'axios'
+import * as EmailValidator from 'email-validator';
 
-const register = () => {
+const signup = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState<any>({});
+
+    const [nameErr, setNameErr] = useState("");
+    const [emailErr, setEmailErr] = useState("");
+    const [pwErr, setPwErr] = useState("");
 
     // 약관 동의 State, function
     const [termsOfUse, setTermsOfUse] = useState(false);
     const [termsOfPrivacy, setTermsOfPrivacy] = useState(false);
     const [older14, setOlder14] = useState(false);
 
-    const clickAll = () => {
+    const [termsErr, setTermsErr] = useState("");
+
+    const clickAllTerms = () => {
         if(termsOfUse && termsOfPrivacy && older14) {
             setTermsOfUse(false);
             setTermsOfPrivacy(false);
@@ -35,6 +41,50 @@ const register = () => {
         older14 ? setOlder14(false) : setOlder14(true)
     }
 
+    // 사용자 입력 체크
+    const nameCheck = () => {
+        if(!name) 
+            setNameErr("이름을 입력해주세요.");
+        else 
+            setNameErr("");
+    }
+    const emailCheck = () => {
+        if(!email) 
+            setEmailErr("이메일 주소를 입력해주세요.");
+        else if(!EmailValidator.validate(email))
+            setEmailErr("이메일 주소를 입력해주세요.");
+        else 
+            setEmailErr("");
+    }
+    const pwCheck = () => {
+        const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+        if(!password) 
+            setPwErr("비밀번호를 입력해주세요.");
+        else if(!regex.test(password))
+            setPwErr("영문+숫자 조합 8자리 이상 입력해주세요.");
+        else 
+            setPwErr("");
+    }
+    // 이용 약관 동의 체크
+    const termsCheck = () => {
+        if(!(termsOfUse && termsOfPrivacy && older14)) 
+            setTermsErr("이용약관에 동의해주세요.");
+        else 
+            setTermsErr("");
+    }
+
+    const valCheck = () => {
+        nameCheck();
+        emailCheck();
+        pwCheck();
+        termsCheck();
+
+        if((nameErr + emailErr + pwErr + termsErr).length === 0) {
+            return false;
+        } else 
+            return true;
+    }
+
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
 
@@ -45,28 +95,11 @@ const register = () => {
                 return;
         }
 
-        const tempErr = {};
-
-        // 사용자 입력 체크
-        if(!name) {
-            tempErr.name = "이름을 입력해주세요.";
-        }
-        if(!email) {
-            tempErr.email = "이메일 주소를 입력해주세요.";
-        }
-        if(!password) {
-            tempErr.password = "비밀번호를 입력해주세요.";
-        }
-        
-        // 이용 약관 동의 체크
-        if(!(termsOfUse && termsOfPrivacy && older14)) {
-            tempErr.terms = "이용약관에 동의해주세요.";
-        }
-
-        setErrors(tempErr);
+        var isError = valCheck();
         
         // 에러 존재 시 함수 종료
-        if(Object.keys(tempErr).length !== 0)
+        // if(Object.keys(tempErr).length !== 0)
+        if(isError)
             return;
 
         try {
@@ -80,7 +113,7 @@ const register = () => {
             console.log('res', res.data);
 
             if(res.data.email)
-                location.href = '/login';
+                location.href = '/';
         } catch (error: any) {
             console.log('error', error);
         }
@@ -95,33 +128,41 @@ const register = () => {
                 <form onSubmit={handleSubmit}
                     className='w-full mx-auto justify-center bg-white p-10 rounded-md'
                     style={{ border: '1px solid #f2f2f2', width: '424px' }}>
-                    <div className='mb-6'>
+                    <div className='mb-6'
+                        onBlur={nameCheck}
+                    >
                         <h4 className='mb-2 font-semibold'>이름</h4>
                         <InputGroup 
                             placeholder = "이름(실명)을 입력해주세요"
                             value={name}
                             setValue={setName}
-                            error={errors.name}
+                            error={nameErr}
                             className=''
                         />
                     </div>
-                    <div className='mb-6'>
+                    <div className='mb-6'
+                        onBlur={emailCheck}
+                    >
                         <h4 className='mb-2 font-semibold'>이메일</h4>
                         <InputGroup 
                             placeholder = "example@soomgo-clone.com"
                             value={email}
                             setValue={setEmail}
-                            error={errors.email}
+                            error={emailErr}
                             className=''
                         />
                     </div>
-                    <div className='mb-6'>
+                    <div className='mb-6'
+                        onBlur={pwCheck}
+                    >
                         <h4 className='mb-2 font-semibold'>비밀번호</h4>
                         <InputGroup 
                             placeholder = "영문+숫자 조합 8자리 이상 입력해주세요"
+                            type='password'
                             value={password}
                             setValue={setPassword}
-                            error={errors.password}
+                            canview={true}
+                            error={pwErr}
                             className=''
                         />
                     </div>
@@ -129,7 +170,7 @@ const register = () => {
                     <div className='flex justify-between'>
                         <div 
                             className='flex cursor-pointer'
-                            onClick={clickAll}
+                            onClick={clickAllTerms}
                         >
                             <FaCheckSquare 
                                 className={termsOfUse && termsOfPrivacy && older14 ?
@@ -189,7 +230,7 @@ const register = () => {
                         </div>
 
                         <div className='mt-4'>
-                            <small className='font-medium text-red-500'>{errors.terms}</small>
+                            <small className='font-medium text-red-500'>{termsErr}</small>
                         </div>
                     </div>
                     
@@ -211,4 +252,4 @@ const register = () => {
     )
 }
 
-export default register
+export default signup

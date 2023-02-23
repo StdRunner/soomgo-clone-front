@@ -18,7 +18,10 @@ const login = () => {
                 return;
         }
         
-        const tempErr = {};
+        const tempErr = {
+            email : '',
+            password : ''
+        };
 
         // 사용자 입력 체크
         if(!email) {
