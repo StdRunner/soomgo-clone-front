@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
                     <Link href='/login'>
                         로그인
                     </Link>
-                    <Link href='/register'>
+                    <Link href='/signup'>
                         회원가입
                     </Link>
                     <button className='h-9 px-3 text-white rounded-md font-semibold bg-[#9370db] hover:bg-[#663399]'>
