@@ -6,7 +6,32 @@ import { profileEnd } from 'console';
 const login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState<any>({});
+
+    const [emailErr, setEmailErr] = useState("");
+    const [passwordErr, setPasswordErr] = useState("");
+
+    // 사용자 입력 체크
+    const emailCheck = () => {
+        if(!email) 
+            setEmailErr("이름을 입력해주세요.");
+        else 
+            setEmailErr("");
+    }
+    const passwordCheck = () => {
+        if(!password) 
+            setPasswordErr("이름을 입력해주세요.");
+        else 
+            setPasswordErr("");
+    }
+    const valCheck = () => {
+        emailCheck();
+        passwordCheck();
+
+        if((emailErr + passwordErr).length === 0) {
+            return false;
+        } else 
+            return true;
+    }
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
@@ -17,25 +42,12 @@ const login = () => {
                 console.error(`Cannot defind baseURL. check ".env*" files and "NEXT_PUBLIC_SERVER_BASE_URL" variable.`);
                 return;
         }
+
+        var isError = valCheck();
         
-        const tempErr = {
-            email : '',
-            password : ''
-        };
-
-        // 사용자 입력 체크
-        if(!email) {
-            tempErr.email = "이메일 주소를 입력해주세요.";
-        }
-        if(!password) {
-            tempErr.password = "비밀번호를 입력해주세요.";
-        }
-
-        setErrors(tempErr);
-
         // 에러 존재 시 함수 종료
-        if(Object.keys(tempErr).length !== 0)
-            return;
+        if(isError)
+            return;        
 
         try {
             const res = await axios.post(`/auth/login`, {
@@ -60,24 +72,30 @@ const login = () => {
                 <form onSubmit={handleSubmit}
                     className='mx-auto justify-center bg-white p-10 rounded-md'
                     style={{ border: '1px solid #f2f2f2', width: '424px' }}>
-                    <div className='mb-6'>
+                    <div 
+                        className='mb-6'
+                        onBlur={emailCheck}
+                    >
                         <h4 className='mb-2 font-semibold'>이메일</h4>
                         <InputGroup 
                             placeholder = "example@soomgo-clone.com"
                             value={email}
                             setValue={setEmail}
-                            error={errors.email}
+                            error={emailErr}
                             className='' 
                         />
                     </div>
-                    <div className='mb-6'>
+                    <div 
+                        className='mb-6'
+                        onBlur={passwordCheck}
+                    >
                         <h4 className='mb-2 font-semibold'>비밀번호</h4>
                         <InputGroup 
                             placeholder = "비밀번호를 입력해주세요."
                             type='password'
                             value={password}
                             setValue={setPassword}
-                            error={errors.password}
+                            error={passwordErr}
                             className=''
                         />
                     </div>
