@@ -7,13 +7,13 @@ const Navbar: React.FC = () => {
         <div className='flex top-0 left-0 w-full bg-white' style={{ height: '72px' }}>
             <div className='flex w-fit mx-auto justify-center items-center'>
                 <div className='flex w-96 h-9 justify-evenly items-center'>
-                    <a href="/" className='italic text-xl font-bold text-[#9370db]'>
+                    <a href="/" className='italic w-17 text-xl font-bold text-[#9370db]'>
                         Soomgo<br/>
                         Clone
                     </a>
                     <div className='font-semibold text-[#323232]'>
                         <a href='/'>
-                            고수매칭
+                            서비스요청
                         </a>
                     </div>
                     <div className='font-semibold text-[#323232]'>
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
                         회원가입
                     </Link>
                     <button className='h-9 px-3 text-white rounded-md font-semibold bg-[#9370db] hover:bg-[#663399]'>
-                        <a href="/master">고수가입</a>
+                        <a href="/signup-master">고수가입</a>
                     </button>
                 </div>
             </div>

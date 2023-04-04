@@ -1,8 +1,9 @@
-import React, { FormEvent, useState } from 'react'
+import React, { useRef, useEffect, FormEvent, useState } from 'react'
 import InputGroup from '../components/InputGroups'
 import { FaCheckSquare } from 'react-icons/fa'
 import axios from 'axios'
 import * as EmailValidator from 'email-validator';
+import { Z_ASCII } from 'zlib';
 
 const signup = () => {
     const [name, setName] = useState("");
@@ -19,6 +20,10 @@ const signup = () => {
     const [older14, setOlder14] = useState(false);
 
     const [termsErr, setTermsErr] = useState("");
+
+    useEffect(() => {
+        document.getElementById("hello")?.focus();
+    })
 
     const clickAllTerms = () => {
         if(termsOfUse && termsOfPrivacy && older14) {
@@ -57,7 +62,7 @@ const signup = () => {
             setEmailErr("");
     }
     const pwCheck = () => {
-        const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+        const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/;
         if(!password) 
             setPwErr("비밀번호를 입력해주세요.");
         else if(!regex.test(password))
@@ -65,6 +70,7 @@ const signup = () => {
         else 
             setPwErr("");
     }
+
     // 이용 약관 동의 체크
     const termsCheck = () => {
         if(!(termsOfUse && termsOfPrivacy && older14)) 
@@ -98,7 +104,6 @@ const signup = () => {
         var isError = valCheck();
         
         // 에러 존재 시 함수 종료
-        // if(Object.keys(tempErr).length !== 0)
         if(isError)
             return;
 
@@ -128,11 +133,13 @@ const signup = () => {
                 <form onSubmit={handleSubmit}
                     className='w-full mx-auto justify-center bg-white p-10 rounded-md'
                     style={{ border: '1px solid #f2f2f2', width: '424px' }}>
+                    {/* <input type="text" id='hello' autoFocus/> */}
+
                     <div className='mb-6'
                         onBlur={nameCheck}
                     >
                         <h4 className='mb-2 font-semibold'>이름</h4>
-                        <InputGroup 
+                        <InputGroup
                             placeholder = "이름(실명)을 입력해주세요"
                             value={name}
                             setValue={setName}
