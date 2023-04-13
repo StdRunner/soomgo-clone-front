@@ -1,0 +1,16 @@
+
+@keyframes icon-up {
+	0% { transform: translate(0, 0); }
+	100% { transform: translate(0, -0.625rem); }
+}
+@keyframes icon-down {
+	0% { transform: translate(0, -0.625rem); }
+	100% { transform: translate(0, 0); }
+}
+
+.cat_icon:hover img {
+	animation: icon-up .1s ease-in-out forwards; /* 애니메이션 적용 */
+}
+.cat_icon:not(:hover) img {
+	animation: icon-down .1s ease-in-out forwards; /* 애니메이션 적용 */
+}
